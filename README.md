@@ -1,1 +1,1 @@
-# dynamicprogrammingseries
+# Dynamic Programming Series
