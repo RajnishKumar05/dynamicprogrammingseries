@@ -74,3 +74,43 @@ int main()
     cout << solveMemo(h,N,K,N-1,dp) << "\n";
     return 0;
 }
+
+//Iterative approach
+#include<bits/stdc++.h>
+using namespace std;
+
+long long solveIterative(const vector<int>& h, int N, int K) 
+{
+    vector<long long> dp(N, LLONG_MAX);
+    dp[0] = 0;  
+
+    
+    for(int i = 1; i < N; i++) 
+    {
+        
+        for(int j = 1; j <= K; j++) 
+        {
+            if(i - j >= 0) 
+            {
+                dp[i] = min(dp[i], dp[i-j] + abs(h[i] - h[i-j]));
+            }
+        }
+    }
+    
+    return dp[N-1];
+}
+
+int main()
+{
+    int N, K;
+    cin >> N >> K;
+
+    vector<int> h(N);
+    for(int i = 0; i < N; i++) 
+    {
+        cin >> h[i];
+    }
+
+    cout << solveIterative(h, N, K) << "\n";
+    return 0;
+}
